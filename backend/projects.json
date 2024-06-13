@@ -1,0 +1,30 @@
+[
+    {
+      "name": "Final Stand at Red Square",
+      "live": "https://subtle-starlight-ea6dd2.netlify.app/",
+      "git": "https://github.com/TrustfulStalin/Invasion-of-Red-Square",
+      "image": "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExeWVxMnN6MnFvdGxnMmNnOWNucGJjcjZsZDBrcXBucTE0ZnNheGk1NyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/befaYZCgtZfZm/200.webp"
+    },
+    {
+      "name": "Best Beer",
+      "live": "https://symphonious-piroshki-7f5b0e.netlify.app/",
+      "git": "https://github.com/TrustfulStalin/GA-mini-project",
+      "image": "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHN6MjNlamdpZWliZm84bmg3b3ZtZXhqanhwZXgxbXFzcjU2YzF5MiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/qiSGGu0d2Dgac/giphy.webp"
+    },
+
+    {
+        "name": "Blues Classic Musicians",
+        "live": "https://blues-classics-b1ca01f0985f.herokuapp.com/20s",
+        "git": "https://git.generalassemb.ly/tevon64/Blue-and-R-B-Classics",
+        "image": "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNG1uOGdoMmRyeGh1dm1xbzd5ZHJkemNhY2Iwejh0ZG94eHNlM2s4dCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/CiG0QNVN2CTYjsgKoT/giphy.webp"
+      },
+      {
+        "name": "DTH Banking App",
+        "live": ":https://dth-bank-ed4211df4a20.herokuapp.com/",
+        "netlify":"https://dth-bank.netlify.app/",
+        "git": ":https://github.com/TrustfulStalin/Proto-Backend",
+        "image": "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExM2FrazJoY2RpcDRsaHRpazZ4bXh1M3dobHJkMXczbDVtMjI3YWZjaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l0OXXpl20sY9G0uJy/giphy.webp"
+      }
+
+
+  ]
