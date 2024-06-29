@@ -27,6 +27,12 @@ function About(props) {
       <a href={'https://www.linkedin.com/in/tevon-talbert-409968217'}>
   <button>My Linkedin profile</button>
 </a>
+
+<a href={'https://www.linkedin.com/feed/update/urn:li:ugcPost:7212725187975290880/'}>
+  <button>My Resume</button>
+  
+</a>
+
     </div>
   );
 
