@@ -1,54 +1,54 @@
-import React, { useState, useEffect } from "react";
-import './Key.css'
+import { useState, useEffect } from "react";
 
-function Projects(props) {
-  // create state to hold projects
-  const [projects, setProjects] = useState(null);
+function Projects({ URL }) {
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  //create function to make api call
-  const getProjectsData = async () => {
-    try {
-      //make api call and get response
-      const response = await fetch(props.URL + "projects");
-      // turn response into javascript object
-      const data = await response.json();
-      // set the projects state to the data
-      setProjects(data);
-    } catch (error) {
-      console.error("Error fetching projects:", error);
-    }
-  };
-
-  // make an initial call for the data inside a useEffect, so it only happens once on component load
   useEffect(() => {
-    getProjectsData();
-  }, []); // empty dependency array ensures this effect only runs once
+    // Construct the fetch URL for the backend endpoint
+    const fetchURL = `${URL}projects`; // Adjust the endpoint as needed
 
-  // define a function that will return the JSX needed once we get the data
-  const loaded = () => {
-    return projects.map((project) => (
-        <div className="box">
-      <div className="key" key={project.id}> {/* added key prop for optimization */}
-        <h1>{project.name}</h1>
-        <img src={project.image} alt={project.name} /> {/* added alt attribute */}
-        <div className="btn">
-        <a href={project.git}>
-          <button>Github</button>
-        </a>
-        <a href={project.live}>
-          <button>frontend</button>
-         </a>  
-       
-        <a href={project.netlify}>
-          <button>backend</button>
-          </a>  
-          </div>
-      </div>
-      </div>
-    ));
-  };
+    // Fetch data from your backend
+    fetch(fetchURL)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setProjects(data); // Store the fetched data
+        setLoading(false); // Set loading state to false
+      })
+      .catch((error) => {
+        setError(error.message); // Handle error if fetch fails
+        setLoading(false); // Set loading state to false
+      });
+  }, [URL]); // Re-run fetch when URL changes (if applicable)
 
-  return projects ? loaded() : <h1>Loading...</h1>;
+  // Render the component based on the states
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  return (
+    <div>
+      <h1>Projects</h1>
+      <ul>
+        {projects.map((project) => (
+          <li key={project.id}>
+            <h3>{project.name}</h3>
+            <p>{project.description}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
 export default Projects;
