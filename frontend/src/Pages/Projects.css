@@ -1,0 +1,94 @@
+/* Container for the entire projects section */
+.projects-container {
+  padding: 20px;
+  text-align: center;
+}
+
+/* Style for the list of project cards */
+.projects-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid */
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* Individual project card styling */
+.project-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Hover effect for the cards */
+.project-card:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Image styling */
+.project-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  object-fit: cover;
+  max-height: 200px; /* Limit image height */
+}
+
+/* Title of each project card */
+.project-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* Description of each project card */
+.project-card p {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.4;
+  margin-top: 10px;
+}
+
+/* Links container for live and GitHub buttons */
+.project-links {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 15px;
+}
+
+/* Button styling for live and GitHub */
+.link-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.link-button:hover {
+  background-color: #0056b3;
+}
+
+/* Optional: Responsive design for small screens */
+@media (max-width: 600px) {
+  .project-links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .link-button {
+    margin: 5px 0;
+  }
+}

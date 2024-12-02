@@ -34,9 +34,30 @@ function About({ URL }) {
   }
 
   return (
-    <div>
+    <div className="about-container">
       <h1>About Us</h1>
-      <p>{aboutData ? aboutData.description : "No information available"}</p>
+
+      {/* Display the name, bio, email, and headshot */}
+      <div className="about-info">
+        {aboutData && (
+          <>
+            <div className="about-header">
+              <img
+                src={aboutData.headshot} // Display the headshot image
+                alt={aboutData.name}
+                className="headshot"
+              />
+              <h2>{aboutData.name}</h2>
+            </div>
+
+            <p>{aboutData.bio}</p>
+            <p>Email: <a href={`mailto:${aboutData.email}`}>{aboutData.email}</a></p>
+          </>
+        )}
+      </div>
+
+      {/* Fallback message if no information is available */}
+      {!aboutData && <p>No information available</p>}
     </div>
   );
 }

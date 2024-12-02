@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import "./Projects.css"; // Import your CSS file for styling (you can name it anything you like)
 
 function Projects({ URL }) {
   const [projects, setProjects] = useState([]);
@@ -6,7 +7,6 @@ function Projects({ URL }) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Construct the fetch URL for the backend endpoint
     const fetchURL = `${URL}projects`; // Adjust the endpoint as needed
 
     // Fetch data from your backend
@@ -27,7 +27,11 @@ function Projects({ URL }) {
       });
   }, [URL]); // Re-run fetch when URL changes (if applicable)
 
-  // Render the component based on the states
+  // Function to handle navigation
+  const handleRedirect = (url) => {
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -37,16 +41,37 @@ function Projects({ URL }) {
   }
 
   return (
-    <div>
+    <div className="projects-container">
       <h1>Projects</h1>
-      <ul>
+      <div className="projects-list">
         {projects.map((project) => (
-          <li key={project.id}>
+          <div className="project-card" key={project.id}>
+            <img
+              src={project.image} // Assuming the image URL is part of the project data
+              alt={project.name}
+              className="project-image"
+            />
             <h3>{project.name}</h3>
             <p>{project.description}</p>
-          </li>
+
+            {/* Links to the live version and the GitHub repository */}
+            <div className="project-links">
+              <button
+                className="link-button"
+                onClick={() => handleRedirect(project.live)}
+              >
+                Live
+              </button>
+              <button
+                className="link-button"
+                onClick={() => handleRedirect(project.git)}
+              >
+                GitHub
+              </button>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
