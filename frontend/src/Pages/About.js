@@ -6,22 +6,22 @@ function About({ URL }) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchURL = `${URL}about`; // Adjust the endpoint if needed
+    const fetchURL = `${URL}/about`; // Ensure the URL is well-formed
 
     fetch(fetchURL)
       .then((response) => {
         if (!response.ok) {
-          throw new Error("Failed to fetch data");
+          throw new Error(`Error: ${response.statusText}`); // Catch HTTP errors and include status text
         }
         return response.json();
       })
       .then((data) => {
         setAboutData(data); // Set the fetched data
-        setLoading(false); // Set loading to false
+        setLoading(false); // Set loading to false once the data is received
       })
       .catch((error) => {
-        setError(error.message); // Handle any errors
-        setLoading(false); // Set loading to false
+        setError(error.message); // Catch and display any errors
+        setLoading(false); // Set loading to false in case of error
       });
   }, [URL]);
 
@@ -30,7 +30,7 @@ function About({ URL }) {
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return <div>Error: {error}</div>; // Display error message
   }
 
   return (
@@ -39,25 +39,28 @@ function About({ URL }) {
 
       {/* Display the name, bio, email, and headshot */}
       <div className="about-info">
-        {aboutData && (
+        {aboutData ? (
           <>
             <div className="about-header">
-              <img
-                src={aboutData.headshot} // Display the headshot image
-                alt={aboutData.name}
-                className="headshot"
-              />
+              {aboutData.headshot && (
+                <img
+                  src={aboutData.headshot} // Display the headshot image
+                  alt={aboutData.name}
+                  className="headshot"
+                />
+              )}
               <h2>{aboutData.name}</h2>
             </div>
 
             <p>{aboutData.bio}</p>
-            <p>Email: <a href={`mailto:${aboutData.email}`}>{aboutData.email}</a></p>
+            {aboutData.email && (
+              <p>Email: <a href={`mailto:${aboutData.email}`}>{aboutData.email}</a></p>
+            )}
           </>
+        ) : (
+          <p>No information available</p> // Fallback if no aboutData is available
         )}
       </div>
-
-      {/* Fallback message if no information is available */}
-      {!aboutData && <p>No information available</p>}
     </div>
   );
 }
