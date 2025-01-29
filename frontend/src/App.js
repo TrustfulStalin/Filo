@@ -11,7 +11,7 @@ import Projects from "./Pages/projects";
 
 function App() {
   // URL should have YOUR HEROKU URL for your backend, make sure you include the trailing slash
-  const URL = "https://portback-816b3f6d02d0.herokuapp.com/";
+  const URL = "https://filoback.netlify.app/index.html";
 
   return (
     <div className="App">
